@@ -6,7 +6,11 @@ extern Innate::Application* Innate::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	printf("Innate Engine\n");
+	Innate::Log::Init();
+	IN_CORE_WARN("Initialized Log!");
+	int a = 5;
+	IN_INFO("Hello Var={0}", a);
+
 	auto app = Innate::CreateApplication();
 	app->Run();
 	delete app;
