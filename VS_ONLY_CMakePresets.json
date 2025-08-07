@@ -1,0 +1,62 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default (Debug, x64)",
+      "description": "Default Debug configuration targeting x64",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_GENERATOR_PLATFORM": "x64"
+      }
+    },
+    {
+      "name": "vs2022-debug",
+      "displayName": "Visual Studio 2022 Debug (x64)",
+      "description": "Build with Visual Studio 2022 in Debug mode for x64",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug-x64"
+      }
+    },
+    {
+      "name": "vs2022-release",
+      "displayName": "Visual Studio 2022 Release (x64)",
+      "description": "Build with Visual Studio 2022 in Release mode for x64",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Release-x64"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-default",
+      "configurePreset": "default"
+    },
+    {
+      "name": "build-vs2022-debug",
+      "configurePreset": "vs2022-debug",
+      "configuration": "Debug-x64"
+    },
+    {
+      "name": "build-vs2022-release",
+      "configurePreset": "vs2022-release",
+      "configuration": "Release-x64"
+    }
+  ],
+  "testPresets": [],
+  "packagePresets": [],
+  "workflowPresets": []
+}

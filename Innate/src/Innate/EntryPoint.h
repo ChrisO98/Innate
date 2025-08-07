@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 #ifdef IN_PLATFORM_WINDOWS
 
@@ -14,6 +15,8 @@ int main(int argc, char** argv)
 	auto app = Innate::CreateApplication();
 	app->Run();
 	delete app;
+	std::cin.get(); // Wait for keypress
+	return 0;
 }
 
 #endif

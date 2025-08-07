@@ -1,3 +1,6 @@
+﻿// Local Windows Debugger - Configuration Properties → Debugging → Command → $(TargetPath) its now $(SolutionDir)setup.bat
+// and Working Directory was $(ProjectDir) its now $(SolutionDir)
+
 #include <Innate.h>
 
 

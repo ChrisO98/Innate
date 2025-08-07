@@ -2,6 +2,9 @@
 .vs/
 bin/
 bin-int/
+build/
+# build/ is made from CMake. Can build the entire Visual Studio Solution using VS_ONLY_CMakePresets.json
+# or Ninja build with CMakePresets.json - use for all platforms
 
 # Files
 *.user
