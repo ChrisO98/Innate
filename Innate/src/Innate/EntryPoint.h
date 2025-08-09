@@ -19,4 +19,22 @@ int main(int argc, char** argv)
 	return 0;
 }
 
+#elif IN_PLATFORM_LINUX
+
+extern Innate::Application* Innate::CreateApplication();
+
+int main(int argc, char** argv)
+{
+        Innate::Log::Init();
+        IN_CORE_WARN("Initialized Log!");
+        int a = 5;
+        IN_INFO("Hello Var={0}", a);
+
+        auto app = Innate::CreateApplication();
+        app->Run();
+        delete app;
+        std::cin.get(); // Wait for keypress
+        return 0;
+}
+
 #endif

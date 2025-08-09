@@ -20,7 +20,16 @@ target_include_directories(Innate PUBLIC
 #target_link_libraries(Innate PRIVATE spdlog)
 
 # Preprocessor defines
-target_compile_definitions(Innate PUBLIC IN_PLATFORM_WINDOWS IN_BUILD_DLL)
+if(WIN32)
+	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+		target_compile_definitions(Innate PUBLIC IN_PLATFORM_WINDOWS IN_BUILD_DLL)
+	endif()
+elseif(UNIX AND NOT APPLE)
+	target_compile_definitions(Innate PUBLIC IN_PLATFORM_LINUX IN_LINUX_SHARE)
+else()
+	message(FATAL_ERROR "Unsupported platform")
+endif()
+#target_compile_definitions(Innate PUBLIC IN_PLATFORM_WINDOWS IN_BUILD_DLL)
 
 if(PRODUCTION_BUILD)
     target_compile_definitions(Innate PUBLIC

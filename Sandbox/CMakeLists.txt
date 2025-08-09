@@ -16,7 +16,16 @@ target_include_directories(Sandbox PRIVATE
 )
 
 # Defines
-target_compile_definitions(Sandbox PUBLIC IN_PLATFORM_WINDOWS)
+if(WIN32)
+	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+		target_compile_definitions(Sandbox PUBLIC IN_PLATFORM_WINDOWS)
+	endif()
+elseif(UNIX AND NOT APPLE)
+	target_compile_definitions(Sandbox PUBLIC IN_PLATFORM_LINUX)
+else()
+	message(FATAL_ERROR "Unsupported platform!")
+endif()
+#target_compile_definitions(Sandbox PUBLIC IN_PLATFORM_WINDOWS IN_PLATFORM_LINUX)
 #target_compile_definitions(Sandbox PRIVATE IN_CLIENT)
 
 if(PRODUCTION_BUILD)
